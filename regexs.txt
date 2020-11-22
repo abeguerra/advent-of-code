@@ -1,0 +1,7 @@
+SEARCH
+  for whole number (2, 45, -6)
+    \d+
+REPLACE
+  the whole number appended with comma
+    $&,
+
