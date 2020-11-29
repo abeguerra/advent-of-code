@@ -60,6 +60,8 @@ public class Day6 {
     int[] nums = { 0,	5,	10,	0,	11,	14,	13,	4,	11,	8,	8,	7,	1,	4,	12,	11 };
     // int[] nums = { 0, 2, 7, 0 };
     System.out.println(countRedistributions(nums));
+    System.out.println(Arrays.toString(nums));
+    System.out.println(countRedistributions(nums));
   }
 
 }
