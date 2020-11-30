@@ -11,7 +11,7 @@ SEARCH
     (^[a-zA-Z]+)(.*)
 REPLACE
   everything with 1st part
-    $1
+    "$1",
 
 
 SEARCH
@@ -25,3 +25,11 @@ REPLACE
 SEARCH
   for trailing list of strings '->' (fwft (72) -> ktlj, cntj, xhth)
     .*\d+\)( -> )?
+
+  then stringify
+    ([^,\s]+)
+    "$1"
+
+  append comma at end
+    (.)$
+    $1,
