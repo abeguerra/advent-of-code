@@ -5,3 +5,23 @@ REPLACE
   the whole number appended with comma
     $&,
 
+
+SEARCH
+  group into char string & everything else (fwft (72) -> ktlj, cntj, xhth)
+    (^[a-zA-Z]+)(.*)
+REPLACE
+  everything with 1st part
+    $1
+
+
+SEARCH
+  group by '->' (fwft (72) -> ktlj, cntj, xhth)
+    (.* -> )(.*)
+REPLACE
+  everything with 2nd part
+    $2
+
+
+SEARCH
+  for trailing list of strings '->' (fwft (72) -> ktlj, cntj, xhth)
+    .*\d+\)( -> )?
