@@ -1,0 +1,3 @@
+abe 47
+ang 44
+alej 6
