@@ -4,24 +4,21 @@ SEARCH
 REPLACE
   the whole number appended with comma
     $&,
-
-
+************************************************************************
 SEARCH
   group into char string & everything else (fwft (72) -> ktlj, cntj, xhth)
     (^[a-zA-Z]+)(.*)
 REPLACE
   everything with 1st part
     "$1",
-
-
+************************************************************************
 SEARCH
   group by '->' (fwft (72) -> ktlj, cntj, xhth)
     (.* -> )(.*)
 REPLACE
   everything with 2nd part
     $2
-
-
+************************************************************************
 SEARCH
   for trailing list of strings '->' (fwft (72) -> ktlj, cntj, xhth)
     .*\d+\)( -> )?
@@ -33,3 +30,40 @@ SEARCH
   append comma at end
     (.)$
     $1,
+************************************************************************
+Convert `tknk (41) -> ugml, padx, fwft`
+to `{ "xhth", "57" },`
+
+SEARCH
+  (^[a-zA-Z]+) \((\d+)\).*
+REPLACE
+  { "$1","$2" },
+************************************************************************
+Remove all strings not containing "->"
+
+SEARCH
+  ^((?!->).)*$
+REPLACE
+  
+************************************************************************
+Convert `tknk (41) -> ugml, padx, fwft`
+to `{ "tknk", "ugml", "padx", "fwft" },`
+
+// pluck character strings
+SEARCH
+  (^[a-zA-Z]+) \(\d+\) -> (.*)  
+REPLACE
+  $1, $2
+
+// replace commas with ","
+SEARCH
+  (, )
+REPLACE
+  "$1"
+
+// prepend and append quotes
+SEARCH
+  (^[a-zA-Z]+)(".*")([a-zA-Z]+$)
+REPLACE
+  { "$1$2$3" },
+************************************************************************
